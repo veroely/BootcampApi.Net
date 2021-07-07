@@ -9,15 +9,22 @@ namespace VeroWebApi.Controllers
     public class ProyectoController : ControllerBase
     {
         [HttpGet]
-        public IActionResult getAllProyectos() 
+        public IActionResult getAll() 
         {
 
-            List<Proyecto> lista = new List<Proyecto>();
-            lista.Add(new Proyecto() { ProyectoId = 1, Nombre = "Sistema Médico", Autor = "Carlos" });
-            lista.Add(new Proyecto() { ProyectoId = 2, Nombre = "App Envio de dinero", Autor = "Mario" });
-            lista.Add(new Proyecto() { ProyectoId = 3, Nombre = "Sistema para Selección de Personal", Autor = "Francisca" });
+            List<Proyecto> lProyectos = listarProyectos();
+            return Ok(lProyectos);
+        }
 
-            return Ok(lista);
+        public List<Proyecto> listarProyectos() 
+        {
+            List<Proyecto> lista = new List<Proyecto>() {
+                new Proyecto() { ProyectoId = 1, Nombre = "Sistema Médico", Autor = "Carlos" },
+                new Proyecto() { ProyectoId = 2, Nombre = "App Envio de dinero", Autor = "Mario" },
+                new Proyecto() { ProyectoId = 3, Nombre = "Sistema para Selección de Personal", Autor = "Francisca" }
+            };
+
+            return lista;
         }
     }
 }
